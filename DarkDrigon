@@ -20,7 +20,7 @@ local redzlib = {
 	["Color Tabs"] = Color3.fromRGB(3, 3, 3), -- tabs mais escuras ainda
 	["Color Content"] = Color3.fromRGB(2, 2, 2), -- conteúdo MAIS preto ainda
 	["Color Stroke"] = Color3.fromRGB(20, 20, 20),
-	["Color Theme"] = Color3.fromRGB(88, 101, 242),
+	["Color Theme"] = Color3.fromRGB(255, 255, 255),
 	["Color Text"] = Color3.fromRGB(243, 243, 243),
 	["Color Dark Text"] = Color3.fromRGB(120, 120, 120),
 
