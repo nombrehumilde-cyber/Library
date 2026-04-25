@@ -1455,30 +1455,41 @@ function redzlib:MakeWindow(Configs)
 			ZIndex = 0
 		})
 
-		task.spawn(function()
-			while task.wait(0.3) do
-				if not MainFrame or not MainFrame.Parent then break end
-				
-				local BallSize = math.random(3, 6)
-				local Ball = Create("Frame", ParticleContainer, {
-					Size = UDim2.fromOffset(BallSize, BallSize),
-					Position = UDim2.new(math.random(), 0, 1, 10),
-					BackgroundColor3 = Theme["Color Theme"],
-					BackgroundTransparency = 0.6,
-					BorderSizePixel = 0,
-					ZIndex = 0
-				}, {
-					Create("UICorner", { CornerRadius = UDim.new(1, 0) })
-				})
+			task.spawn(function()
+				while task.wait(0.4) do
+					if not MainFrame or not MainFrame.Parent then break end
+					
+					local BallSize = math.random(8, 12) -- Bolinhas um pouco maiores
+					local Ball = Create("Frame", ParticleContainer, {
+						Size = UDim2.fromOffset(BallSize, BallSize),
+						Position = UDim2.new(math.random(), 0, 1, 10),
+						BackgroundColor3 = Color3.fromRGB(0, 0, 0), -- Bolinha preta
+						BackgroundTransparency = 0.5,
+						BorderSizePixel = 0,
+						ZIndex = 0
+					}, {
+						Create("UICorner", { CornerRadius = UDim.new(1, 0) }),
+						Create("Frame", { -- Meio azul
+							Size = UDim2.fromScale(0.5, 0.5),
+							Position = UDim2.fromScale(0.5, 0.5),
+							AnchorPoint = Vector2.new(0.5, 0.5),
+							BackgroundColor3 = Theme["Color Theme"], -- Azul do tema
+							BackgroundTransparency = 0.3,
+							BorderSizePixel = 0,
+							ZIndex = 0
+						}, {
+							Create("UICorner", { CornerRadius = UDim.new(1, 0) })
+						})
+					})
 
-				local Tween = TweenService:Create(Ball, TweenInfo.new(math.random(2, 4), Enum.EasingStyle.Linear), {
-					Position = UDim2.new(Ball.Position.X.Scale, 0, -0.2, 0),
-					BackgroundTransparency = 1
-				})
-				Tween:Play()
-				Tween.Completed:Connect(function() Ball:Destroy() end)
-			end
-		end)
+					local Tween = TweenService:Create(Ball, TweenInfo.new(math.random(3, 5), Enum.EasingStyle.Linear), {
+						Position = UDim2.new(Ball.Position.X.Scale, 0, -0.2, 0),
+						BackgroundTransparency = 1
+					})
+					Tween:Play()
+					Tween.Completed:Connect(function() Ball:Destroy() end)
+				end
+			end)
 	Make("Gradient", MainFrame, {
 		Rotation = 45
 	})MakeDrag(MainFrame)
