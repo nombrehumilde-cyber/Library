@@ -45,11 +45,13 @@ local redzlib = {
                         ["Color Theme"] = Color3.fromRGB(150, 0, 255),
                         ["Color Text"] = Color3.fromRGB(240, 240, 240),
                         ["Color Dark Text"] = Color3.fromRGB(180, 180, 180)
-                }
-                ,FLUB = {
+                },
+                FLUB = {
                         ["Color Hub 1"] = ColorSequence.new({
-                                ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 20)),
-                                ColorSequenceKeypoint.new(1, Color3.fromRGB(20, 20, 20))
+                                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(11, 10, 12)),
+                                ColorSequenceKeypoint.new(0.48, Color3.fromRGB(39, 27, 35)),
+                                ColorSequenceKeypoint.new(0.82, Color3.fromRGB(83, 60, 61)),
+                                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(147, 122, 94))
                         }),
                         ["Color Hub 2"] = Color3.fromRGB(39, 36, 31),
                         ["Color Stroke"] = Color3.fromRGB(130, 117, 94),
@@ -1437,7 +1439,7 @@ function redzlib:MakeWindow(Configs)
         local MainFrame = InsertTheme(Create("ImageButton", ScreenGui, {
                 Size = UDim2.fromOffset(UISizeX, UISizeY),
                 Position = UDim2.new(0.5, -UISizeX/2, 0.5, -UISizeY/2),
-                BackgroundTransparency = 1,
+                BackgroundTransparency = 0.12,
                 Name = "Hub",
                 ClipsDescendants = true
         }), "Main")
@@ -1445,25 +1447,7 @@ function redzlib:MakeWindow(Configs)
                 Rotation = 0
         })
 
-        -- Fundo FLUB dividido: painéis estáticos abaixo das opções e abas.
-        local DarkHalf = Create("Frame", MainFrame, {
-                Name = "FLUB Dark Half",
-                Size = UDim2.new(0.5, 0, 1, 0),
-                Position = UDim2.new(0, 0, 0, 0),
-                BackgroundColor3 = Color3.fromRGB(18, 18, 18),
-                BackgroundTransparency = 0.16,
-                BorderSizePixel = 0,
-                ZIndex = 1
-        })
-        local BeigeHalf = Create("Frame", MainFrame, {
-                Name = "FLUB Beige Half",
-                Size = UDim2.new(0.5, 0, 1, 0),
-                Position = UDim2.new(0.5, 0, 0, 0),
-                BackgroundColor3 = Color3.fromRGB(207, 190, 160),
-                BackgroundTransparency = 0.16,
-                BorderSizePixel = 0,
-                ZIndex = 1
-        })
+        -- Degradê contínuo escuro com transição quente para bege, como na referência.
         local ParticleLayer = Create("Frame", MainFrame, {
                 Name = "FLUB Particles",
                 Size = UDim2.fromScale(1, 1),
